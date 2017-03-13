@@ -4,6 +4,8 @@ package by.IvkoS.db.entity.clients;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="client")
@@ -26,7 +28,15 @@ public class Client implements Serializable {
     @Column(nullable = false)
     private String firstname;
 
-    @Embedded
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "client_address", catalog = "webshoop", joinColumns = {
+            @JoinColumn(name = "client_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "address_id",
+                    nullable = false, updatable = false) })
+    private Set<Address> addressSet = new HashSet<>();
+
+   /* @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "houseNumber", column = @Column(name = "houseNumber")),
             @AttributeOverride(name = "streetAddress", column = @Column(name = "streetAddress")),
@@ -34,7 +44,7 @@ public class Client implements Serializable {
             @AttributeOverride(name = "state", column = @Column(name = "state")),
             @AttributeOverride(name = "zipCode", column = @Column(name = "zipCode"))
     })
-    private Address address;
+    private Address address;*/
 
     @Column
     private String gender;
@@ -82,14 +92,6 @@ public class Client implements Serializable {
         this.firstname = firstname;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -109,18 +111,22 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(String login, String password, String lastname, String firstname, Address address) {
+    public Client(String login, String password, String lastname, String firstname, Set<Address> addressSet, String gender, Integer age) {
         this.login = login;
         this.password = password;
         this.lastname = lastname;
         this.firstname = firstname;
-        this.address = address;
-    }
-
-    public Client(String login, String password, String lastname, String firstname, Address address, String gender, Integer age) {
-        this(login, password, lastname, firstname, address);
+        this.addressSet = addressSet;
         this.gender = gender;
         this.age = age;
+    }
+
+    public Set<Address> getAddressSet() {
+        return addressSet;
+    }
+
+    public void setAddressSet(Set<Address> addressSet) {
+        this.addressSet = addressSet;
     }
 
     @Override
@@ -131,7 +137,7 @@ public class Client implements Serializable {
                 ", password='" + password + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", firstname='" + firstname + '\'' +
-                ", address=" + address +
+                ", addressSet=" + addressSet +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
                 '}';
