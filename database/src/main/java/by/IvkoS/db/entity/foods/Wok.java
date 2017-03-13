@@ -1,4 +1,4 @@
-package by.IvkoS.db.models.foods;
+package by.IvkoS.db.entity.foods;
 
 
 public class Wok extends Food {
