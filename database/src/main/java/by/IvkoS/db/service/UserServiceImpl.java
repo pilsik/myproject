@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -32,9 +34,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void removeClient(Client client) {
+    public Client removeClient(Client client) {
         logger.info("Client remove :" + client);
-        clientDao.delete(client);
+        return clientDao.delete(client);
     }
 
     @Override
@@ -42,5 +44,15 @@ public class UserServiceImpl implements UserService {
     public Client updateClient(Client client) {
         logger.info("Client update :" + client);
         return this.clientDao.update(client);
+    }
+
+    @Override
+    public List<Client> getClientList() {
+        return this.clientDao.readList();
+    }
+
+    @Override
+    public Client removeClientById(int id) {
+        return this.clientDao.deleteById(id);
     }
 }

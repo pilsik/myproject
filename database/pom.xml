@@ -11,6 +11,10 @@
 
     <artifactId>database</artifactId>
 
+    <properties>
+        <org.hibernate>5.2.8.Final</org.hibernate>
+    </properties>
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -20,21 +24,29 @@
             <version>6.0.5</version>
         </dependency>
 
-
         <!-- Hibernate framework -->
 
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.8.Final</version>
+            <version>${org.hibernate}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.8.Final</version>
+            <version>${org.hibernate}</version>
+        </dependency>
+
+        <!-- Object-to-Relation-Mapping (ORM) integration with Hibernate, JPA,
+       and iBatis. (depends on spring-core, spring-beans, spring-context, spring-tx)
+       Define this if you need ORM (org.springframework.orm.*) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${org.springframework.version}</version>
         </dependency>
 
     </dependencies>

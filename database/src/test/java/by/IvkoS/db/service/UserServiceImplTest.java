@@ -11,6 +11,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -75,6 +76,42 @@ public class UserServiceImplTest {
         Client client1 = userService.getClient(client.getId());
         client1.setAge(30);
         userService.updateClient(client1);
+        assertEquals((Integer)30, userService.getClient(client1.getId()).getAge());
+    }
+
+    @Test
+    public void getClientList() throws Exception {
+        Address address = new Address(1,"test","test","test","test");
+        Address address2 = new Address(1,"test","test","test","test");
+        Set<Address> addressSet = new HashSet<>();
+        addressSet.add(address);
+        addressSet.add(address2);
+        Client client = new Client("test","test","test","test",
+                addressSet,"test",23);
+        userService.addClient(client);
+        Address address3 = new Address(1,"test","test","test","test");
+        Address address4 = new Address(1,"test","test","test","test");
+        Set<Address> addressSet2 = new HashSet<>();
+        addressSet.add(address3);
+        addressSet.add(address4);
+        Client client2 = new Client("test1","test","test","test",
+                addressSet2,"test",23);
+        userService.addClient(client2);
+        assertEquals(userService.getClientList().size(),2);
+    }
+
+    @Test
+    public void removeClientById() throws Exception {
+        Address address = new Address(1,"test","test","test","test");
+        Address address2 = new Address(1,"test","test","test","test");
+        Set<Address> addressSet = new HashSet<>();
+        addressSet.add(address);
+        addressSet.add(address2);
+        Client client = new Client("test","test","test","test",
+                addressSet,"test",23);
+        userService.addClient(client);
+        userService.removeClientById(client.getId());
+        assertEquals(userService.getClientList().size(),0);
     }
 
 }

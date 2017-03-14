@@ -21,6 +21,7 @@
 
     <dependencies>
 
+        <!--Junit-->
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -79,22 +80,16 @@
             <version>${org.springframework.version}</version>
         </dependency>
 -->
+
+
         <!-- Transaction Management Abstraction (depends on spring-core, spring-beans,
-            spring-aop, spring-context) Define this if you use Spring Transactions or
-            DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*)-->
-        <dependency>
+         spring-aop, spring-context) Define this if you use Spring Transactions or
+         DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*)-->
+       <!-- <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${org.springframework.version}</version>
-        </dependency>
-        <!-- Object-to-Relation-Mapping (ORM) integration with Hibernate, JPA,
-        and iBatis. (depends on spring-core, spring-beans, spring-context, spring-tx)
-        Define this if you need ORM (org.springframework.orm.*) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- Support for testing Spring applications with tools such as JUnit and
       TestNG This artifact is generally always defined with a 'test' scope for
@@ -140,11 +135,13 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.12</version>
         </dependency>
-        <dependency>
+
+       <!-- <dependency>
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging</artifactId>
             <version>3.3.0.Final</version>
-        </dependency>
+        </dependency>-->
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -165,5 +162,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${org.springframework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
