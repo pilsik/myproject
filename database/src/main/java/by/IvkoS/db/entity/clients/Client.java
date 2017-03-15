@@ -32,10 +32,10 @@ public class Client implements Serializable {
     @Column(nullable = false)
     private String firstname;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "client_address",
             joinColumns = {
-            @JoinColumn(name = "client_id", nullable = false, updatable = false) },
+            @JoinColumn(name = "client_id") },
             inverseJoinColumns = { @JoinColumn(name = "address_id",
                     nullable = false, updatable = false) })
     private Set<Address> addressSet = new HashSet<>();

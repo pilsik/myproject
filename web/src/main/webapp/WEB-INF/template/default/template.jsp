@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrapper">
@@ -20,14 +22,15 @@
     <div class="middle">
 
         <div class="container">
-            <main class="content">
-            <tiles:insertAttribute name="body"/>
-            </main><!-- .content -->        </div><!-- .container-->
-
-        <aside class="left-sidebar">
-            <tiles:insertAttribute name="menu"/>
-        </aside><!-- .left-sidebar -->
-
+            <div class="row">
+                <div class="col-sm-4">
+                    <tiles:insertAttribute name="menu"/>
+                </div><!-- .left-sidebar -->
+                <div class="col-md-8">
+                    <tiles:insertAttribute name="body"/>
+                </div><!-- .container-->
+            </div>
+        </div>
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
@@ -35,7 +38,6 @@
 <footer class="footer">
     <tiles:insertAttribute name="footer"/>
 </footer><!-- .footer -->
-
 
 </body>
 </html>

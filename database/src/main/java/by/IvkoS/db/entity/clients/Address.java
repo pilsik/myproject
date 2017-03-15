@@ -28,7 +28,7 @@ public class Address {
     @Column
     private String zipCode;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "addressSet")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addressSet")
     private Set<Client> clients = new HashSet<>(0);
 
     public Address() {

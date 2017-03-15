@@ -10,5 +10,9 @@
             <spring:url value="/about" var="aboutUrl" htmlEscape="true"/>
             <a href="${aboutUrl}">About</a>
         </li>
+        <li>
+            <spring:url value="/newclient" var="newclientUrl" htmlEscape="true"/>
+            <a href="${newclientUrl}">New Client</a>
+        </li>
     </ul>
 </div>
