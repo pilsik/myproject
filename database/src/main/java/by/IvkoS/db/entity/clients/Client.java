@@ -1,6 +1,8 @@
 package by.IvkoS.db.entity.clients;
 
 
+import by.IvkoS.db.entity.clients.security.UserProfile;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -30,23 +32,19 @@ public class Client implements Serializable {
     @Column(nullable = false)
     private String firstname;
 
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "client_address", catalog = "webshoop", joinColumns = {
+    @JoinTable(name = "client_address",
+            joinColumns = {
             @JoinColumn(name = "client_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "address_id",
                     nullable = false, updatable = false) })
     private Set<Address> addressSet = new HashSet<>();
 
-   /* @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "houseNumber", column = @Column(name = "houseNumber")),
-            @AttributeOverride(name = "streetAddress", column = @Column(name = "streetAddress")),
-            @AttributeOverride(name = "city", column = @Column(name = "city")),
-            @AttributeOverride(name = "state", column = @Column(name = "state")),
-            @AttributeOverride(name = "zipCode", column = @Column(name = "zipCode"))
-    })
-    private Address address;*/
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "client_and_profile",
+            joinColumns = { @JoinColumn(name = "clientid") },
+            inverseJoinColumns = { @JoinColumn(name = "profileid") })
+    private Set<UserProfile> userProfiles = new HashSet<>();
 
     @Column
     private String gender;
@@ -123,12 +121,66 @@ public class Client implements Serializable {
         this.age = age;
     }
 
+    public Client(String login, String password, String lastname, String firstname, Set<Address> addressSet, Set<UserProfile> userProfiles, String gender, Integer age) {
+        this.login = login;
+        this.password = password;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.addressSet = addressSet;
+        this.userProfiles = userProfiles;
+        this.gender = gender;
+        this.age = age;
+    }
+
     public Set<Address> getAddressSet() {
         return addressSet;
     }
 
     public void setAddressSet(Set<Address> addressSet) {
         this.addressSet = addressSet;
+    }
+
+    public Set<UserProfile> getUserProfiles() {
+        return userProfiles;
+    }
+
+    public void setUserProfiles(Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Client client = (Client) o;
+
+        if (id != null ? !id.equals(client.id) : client.id != null) return false;
+        if (login != null ? !login.equals(client.login) : client.login != null) return false;
+        if (password != null ? !password.equals(client.password) : client.password != null) return false;
+        if (lastname != null ? !lastname.equals(client.lastname) : client.lastname != null) return false;
+        if (firstname != null ? !firstname.equals(client.firstname) : client.firstname != null) return false;
+        if (addressSet != null ? !addressSet.equals(client.addressSet) : client.addressSet != null) return false;
+        if (userProfiles != null ? !userProfiles.equals(client.userProfiles) : client.userProfiles != null)
+            return false;
+        if (gender != null ? !gender.equals(client.gender) : client.gender != null) return false;
+        return age != null ? age.equals(client.age) : client.age == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (addressSet != null ? addressSet.hashCode() : 0);
+        result = 31 * result + (userProfiles != null ? userProfiles.hashCode() : 0);
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        return result;
     }
 
     @Override

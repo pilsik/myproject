@@ -17,7 +17,7 @@ public class ClientDaoImp extends GenericDaoJpaImpl<Client, Integer> implements 
     @Override
     public Client findByLogin(String login) {
         Client client = (Client) super.hibernateTemplate
-                .findByNamedParam("from Client as client where client.login=:login",login,new Object[]{login})
+                .findByNamedParam("from Client as client where client.login=:login","login",new Object[]{login})
                 .get(INDEX_FIRST_CLIENT_AT_LIST);
         return (client != null) ? client : Client.EMPTY_CLIENT;
     }

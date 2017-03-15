@@ -11,6 +11,8 @@ public interface UserService {
 
     Client getClientById(int id);
 
+    Client findClientByLogin(String login);
+
     Client removeClient(Client client);
 
     Client updateClient(Client client);
@@ -18,4 +20,6 @@ public interface UserService {
     List<Client> getClientList();
 
     Client removeClientById(int id);
+
+
 }

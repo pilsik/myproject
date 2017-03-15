@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public Client addClient(Client client) {
-        logger.info(String.format("old password: %s", client.getPassword()));
+        logger.info(String.format("old password: %s", client    .getPassword()));
         client.setPassword(passwordEncoder.encode(client.getPassword()));
         logger.info(String.format("new password: %s", client.getPassword()));
         logger.info("Client add :" + client);
@@ -61,5 +61,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Client removeClientById(int id) {
         return this.clientDao.deleteById(id);
+    }
+
+    @Override
+    public Client findClientByLogin(String login) {
+        return this.clientDao.findByLogin(login);
     }
 }

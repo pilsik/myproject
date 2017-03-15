@@ -13,11 +13,10 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("provider")
+@Service("MyAuthenticationProvider")
 public class AuthenticationProviderImpl implements AuthenticationProvider {
 
     static private final Logger logger = (Logger) LoggerFactory.getLogger(AuthenticationProviderImpl.class);
-
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

@@ -13,10 +13,12 @@
     <!-- DispatcherServlet Context: defines this servlet's request-processing
 		infrastructure -->
 
+    <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven/>
     <context:annotation-config/>
 
     <context:component-scan base-package="by.IvkoS.web"/>
+    <import resource="classpath:spring-context-db.xml" />
 
     <!-- Used to serve static resources like css, images and javascript files-->
     <mvc:resources mapping="/js/**" location="/js/"/>
@@ -45,7 +47,6 @@
     </bean>
 
     <!-- Tiles configuration -->
-
     <bean id="tilesConfigurer"
           class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
