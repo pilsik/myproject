@@ -39,6 +39,10 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" >
+        <constructor-arg name="strength" value="11"/>
+    </bean>
+
     <context:annotation-config/>
     <context:component-scan base-package="by.IvkoS.db"/>
     <tx:annotation-driven transaction-manager="txManager"/>

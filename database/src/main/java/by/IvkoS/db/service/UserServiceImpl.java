@@ -5,6 +5,7 @@ import by.IvkoS.db.entity.clients.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,20 +17,26 @@ public class UserServiceImpl implements UserService {
     public static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
-    ClientDao clientDao;
+    private ClientDao clientDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
     public Client addClient(Client client) {
+        logger.info(String.format("old password: %s", client.getPassword()));
+        client.setPassword(passwordEncoder.encode(client.getPassword()));
+        logger.info(String.format("new password: %s", client.getPassword()));
         logger.info("Client add :" + client);
         return this.clientDao.create(client);
     }
 
     @Override
-    @Transactional
-    public Client getClient(int id) {
+    @Transactional(readOnly = true)
+    public Client getClientById(int id) {
         logger.info("Client get with id :" + id);
-        return this.clientDao.read(id);
+        return this.clientDao.readById(id);
     }
 
     @Override

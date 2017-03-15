@@ -30,7 +30,7 @@ public class GenericDaoJpaImpl<T, PK extends Serializable>
     }
 
     @Override
-    public T read(PK id) {
+    public T readById(PK id) {
         return this.hibernateTemplate.get(entityClass, id);
     }
 
@@ -62,4 +62,5 @@ public class GenericDaoJpaImpl<T, PK extends Serializable>
         this.hibernateTemplate.delete(t);
         return t;
     }
+
 }

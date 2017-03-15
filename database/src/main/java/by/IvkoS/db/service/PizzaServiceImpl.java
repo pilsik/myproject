@@ -19,8 +19,9 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Pizza getPizza(int id) {
-        return pizzaDao.read(id);
+        return pizzaDao.readById(id);
     }
 
     @Override

@@ -47,7 +47,7 @@ public class UserServiceImplTest {
         Client client = new Client("test","test","test","test",
                 addressSet,"test",23);
         userService.addClient(client);
-        userService.getClient(client.getId());
+        userService.getClientById(client.getId());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class UserServiceImplTest {
         Client client = new Client("test","test","test","test",
                 addressSet,"test",23);
         userService.addClient(client);
-        userService.removeClient(userService.getClient(client.getId()));
+        userService.removeClient(userService.getClientById(client.getId()));
     }
 
     @Test
@@ -73,10 +73,10 @@ public class UserServiceImplTest {
         Client client = new Client("test","test","test","test",
                 addressSet,"test",23);
         userService.addClient(client);
-        Client client1 = userService.getClient(client.getId());
+        Client client1 = userService.getClientById(client.getId());
         client1.setAge(30);
         userService.updateClient(client1);
-        assertEquals((Integer)30, userService.getClient(client1.getId()).getAge());
+        assertEquals((Integer)30, userService.getClientById(client1.getId()).getAge());
     }
 
     @Test

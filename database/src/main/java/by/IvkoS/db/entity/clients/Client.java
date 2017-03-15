@@ -11,6 +11,8 @@ import java.util.Set;
 @Table(name="client")
 public class Client implements Serializable {
 
+    public static final Client EMPTY_CLIENT = new Client();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idclient")

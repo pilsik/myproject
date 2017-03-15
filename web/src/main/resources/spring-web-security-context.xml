@@ -30,14 +30,18 @@
         <logout logout-success-url="/login" logout-url="/j_spring_security_logout"/>
 
         <!--  Межсайтовая подделка запроса (защита)-->
-        <csrf disabled="true"/>
-
-        <!-- enable csrf protection -->
         <csrf/>
+
     </http>
 
     <authentication-manager>
-        <authentication-provider ref="provider"/>
+        <authentication-provider user-service-ref="customUserDetailsService">
+            <password-encoder ref="bcryptEncoder" />
+        </authentication-provider>
     </authentication-manager>
+
+    <beans:bean id ="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="11"/>
+    </beans:bean>
 
 </beans:beans>

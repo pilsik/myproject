@@ -24,7 +24,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         String login = authentication.getName();
         String password = authentication.getCredentials().toString();
         List<GrantedAuthority> authorities = new ArrayList<>();
-        if(login.equals("admin")){
+        if(login.equals("admin") && password.equals("$2a$06$XfeV999gbJ3Y2LfX5IbWwuW1MV0hxj6/IRBBPyeWCMsN8flyjbfOK")){
             authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
             logger.info("AUTHENTICATION");
             return new UsernamePasswordAuthenticationToken(login, password, authorities);

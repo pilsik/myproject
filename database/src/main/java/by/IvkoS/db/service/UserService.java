@@ -9,7 +9,7 @@ public interface UserService {
 
     Client addClient(Client client);
 
-    Client getClient(int id);
+    Client getClientById(int id);
 
     Client removeClient(Client client);
 

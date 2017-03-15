@@ -20,7 +20,7 @@ public class DrinkServiceImpl implements DrinkService {
 
     @Override
     public Drink getDrink(int id) {
-        return drinkDao.read(id);
+        return drinkDao.readById(id);
     }
 
     @Override
