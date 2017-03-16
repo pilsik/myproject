@@ -15,6 +15,8 @@
     <properties>
         <org.hibernate>5.2.8.Final</org.hibernate>
         <spring-security-crypto>4.2.2.RELEASE</spring-security-crypto>
+        <version.spring.mongodb>1.10.1.RELEASE</version.spring.mongodb>
+        <version.jackson>1.9.13</version.jackson>
     </properties>
 
     <dependencies>
@@ -58,6 +60,25 @@
             <version>${spring-security-crypto}</version>
         </dependency>
 
+        <!--MongoDB-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>${version.spring.mongodb}</version>
+        </dependency>
+
+        <!-- MongoDB драйвер -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${version.jackson}</version>
+        </dependency>
 
     </dependencies>
 </project>
