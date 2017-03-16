@@ -41,6 +41,12 @@ public class MainController {
         return new ModelAndView("home");
     }
 
+    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    public String fromLoginIndex() {
+        logger.info("Post redirect get");
+        return "redirect:/home";
+    }
+
     @RequestMapping(value = "/newclient", method = RequestMethod.GET)
     public String newRegistration(ModelMap model) {
         Client client = new Client();
@@ -56,7 +62,7 @@ public class MainController {
 
         if (result.hasErrors()) {
             System.out.println("There are errors");
-            return "redirect:newclient";
+            return "redirect:/newclient";
         }
 
         logger.info("Save client:" + client.toString());
@@ -79,6 +85,6 @@ public class MainController {
         Client client = userService.findClientByLogin(login);
         client.getAddressSet().add(address);
         userService.updateClient(client);
-        return "redirect:addAddress";
+        return "redirect:/addAddress";
     }
 }

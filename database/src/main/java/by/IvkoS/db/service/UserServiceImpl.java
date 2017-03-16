@@ -25,7 +25,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public Client addClient(Client client) {
-        logger.info(String.format("old password: %s", client    .getPassword()));
+        logger.info(String.format("old password: %s", client.getPassword()));
+        if(client == Client.EMPTY_CLIENT){
+            logger.error(String.format("retrurn null client"));
+            return client;
+        }
         client.setPassword(passwordEncoder.encode(client.getPassword()));
         logger.info(String.format("new password: %s", client.getPassword()));
         logger.info("Client add :" + client);
