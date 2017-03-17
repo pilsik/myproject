@@ -11,10 +11,11 @@
 	   					      http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
 	   					   ">
     <!--
-       Загружает properties файл в конфигурацию Spring (т.е. сюда).
-       Переменные из файла можно будет использовать как ${mongo.host} (пример см. ниже)
+       Загружает properties файл в конфигурацию.
        -->
     <context:property-placeholder location="classpath:mongo.properties"/>
+
+    <context:component-scan base-package="by.IvkoS.mongodb"/>
 
     <!-- Создаем бин 'mongo' -->
     <mongo:mongo host="${mongo.host}" port="${mongo.port}"/>
@@ -23,11 +24,7 @@
     Создаем бин 'mongoDbFactory'.
     Если MongoDB не требует авторизации, то поля username, password можно убрать
     -->
-    <mongo:db-factory
-            username="${mongo.username}"
-            password="${mongo.password}"
-            dbname="${mongo.db}"
-            mongo-ref="mongo"/>
+    <mongo:db-factory dbname="${mongo.db}" mongo-ref="mongo"  username="${mongo.username}" password="${mongo.password}"/>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
