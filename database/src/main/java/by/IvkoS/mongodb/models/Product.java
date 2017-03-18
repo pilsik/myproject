@@ -76,4 +76,14 @@ public class Product implements Serializable{
         result = 31 * result + (producer != null ? producer.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", producer='" + producer + '\'' +
+                '}';
+    }
 }

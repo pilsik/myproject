@@ -1,28 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="hibernate" name="Hibernate">
-      <configuration>
-        <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="012e9e57-ab6a-4e47-b3b8-5fd6d65459c7" />
-          <unit-entry name="sessionFactory" value="75d17cfd-7b1b-468d-ba8f-20f69bbd4b90" />
-        </datasource-map>
-        <naming-strategy-map>
-          <unit-entry name="hibernate.cfg.xml" value="org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl" />
-          <unit-entry name="sessionFactory" value="org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl" />
-        </naming-strategy-map>
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
-      </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context1" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/spring-context-db.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring-mongo-db.xml</file>
-        </fileset>
-      </configuration>
-    </facet>
-  </component>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />

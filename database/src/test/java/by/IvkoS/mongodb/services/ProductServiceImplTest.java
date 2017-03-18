@@ -16,7 +16,6 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-mongo-db.xml")
-@Rollback(true)
 public class ProductServiceImplTest {
 
     @Autowired
@@ -36,15 +35,17 @@ public class ProductServiceImplTest {
     public void add() throws Exception {
         Product product = new Product("test","test","test");
         productService.add(product);
+        productService.remove(product.getId());
     }
 
     @Test
     public void update() throws Exception {
         Product product = new Product("test1","test1","test1");
         productService.add(product);
-        Product product1 = productService.get(product.getId());
-        product1.setName("test1test1");
+        product.setName("test1test1");
         productService.update(product);
+        assertEquals(productService.get(product.getId()).getName(),"test1test1");
+        productService.remove(product.getId());
     }
 
     @Test
@@ -53,6 +54,7 @@ public class ProductServiceImplTest {
         productService.add(product);
         Product product2 = productService.get(product.getId());
         assertEquals(product,product2);
+        productService.remove(product.getId());
     }
 
     @Test
@@ -62,6 +64,8 @@ public class ProductServiceImplTest {
         productService.add(product);
         productService.add(product1);
         assertEquals(productService.getAll().size(),2);
+        productService.remove(product.getId());
+        productService.remove(product1.getId());
     }
 
     @Test
@@ -69,7 +73,6 @@ public class ProductServiceImplTest {
         Product product = new Product("test5","test5","test5");
         productService.add(product);
         productService.remove(product.getId());
-
     }
 
 }
