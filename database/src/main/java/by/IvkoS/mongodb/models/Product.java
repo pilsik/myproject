@@ -19,6 +19,9 @@ public class Product implements Serializable{
     private double price;
     private String type;
 
+    public Product() {
+    }
+
     public Product(String name, String description, String producer, double price, String type) {
         this.name = name;
         this.description = description;
