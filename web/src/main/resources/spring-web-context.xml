@@ -16,10 +16,11 @@
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven  conversion-service="conversionService"/>
     <context:annotation-config/>
-
     <context:component-scan base-package="by.IvkoS.web"/>
+
     <import resource="classpath:spring-context-db.xml" />
     <import resource="classpath:spring-mongo-db.xml" />
+    <import resource="classpath:spring-rest-config.xml" />
 
     <!-- Used to serve static resources like css, images and javascript files-->
     <mvc:resources mapping="/js/**" location="/js/"/>

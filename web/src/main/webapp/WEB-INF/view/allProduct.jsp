@@ -2,6 +2,7 @@
 
 <tiles:insertDefinition name="includeAngular">
     <tiles:putAttribute name="body">
+        ${name}
         <table class="table">
             <thead class="thead-inverse">
             <tr>
@@ -14,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="product in products">
+            <tr ng-repeat="product in ${products}">
                 <td>{{product.id}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>

@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
-    <facet type="hibernate" name="Hibernate">
-      <configuration>
-        <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="dde60064-4894-45c8-a064-98ed9a7d2f23" />
-          <unit-entry name="sessionFactory" value="75d17cfd-7b1b-468d-ba8f-20f69bbd4b90" />
-        </datasource-map>
-        <naming-strategy-map>
-          <unit-entry name="hibernate.cfg.xml" value="org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl" />
-          <unit-entry name="sessionFactory" value="org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl" />
-        </naming-strategy-map>
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
-      </configuration>
-    </facet>
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/spring-context-db.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-rest-config.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -33,6 +20,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="database" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.5" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:5.2.8.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
@@ -47,21 +35,25 @@
     <orderEntry type="library" name="Maven: org.jboss:jandex:2.0.3.Final" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.3.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:4.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-mongodb:1.10.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:1.13.1.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.24" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:3.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:4.3.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />

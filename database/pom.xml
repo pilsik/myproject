@@ -16,7 +16,6 @@
         <org.hibernate>5.2.8.Final</org.hibernate>
         <spring-security-crypto>4.2.2.RELEASE</spring-security-crypto>
         <version.spring.mongodb>1.10.1.RELEASE</version.spring.mongodb>
-        <version.jackson>1.9.13</version.jackson>
     </properties>
 
     <dependencies>
@@ -73,8 +72,6 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>3.4.2</version>
         </dependency>
-
-
 
         <!-- https://mvnrepository.com/artifact/org.jongo/jongo -->
         <!--http://jongo.org/-->
