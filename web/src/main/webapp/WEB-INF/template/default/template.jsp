@@ -4,6 +4,9 @@
 <html>
 <head>
     <meta charset="utf-8"/>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title></title>
@@ -11,6 +14,7 @@
     <meta name="description" content=""/>
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/bootstrap.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <tiles:insertAttribute name="angular" ignore="true"/>
 </head>
 <body>

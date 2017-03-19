@@ -13,8 +13,8 @@
 
     <http auto-config="true" use-expressions="true">
 
-       <!-- <intercept-url pattern="/login*" access="permitAll()"/>
-        <intercept-url pattern="/newclient*" access="hasRole('ROLE_ADMIN')"/>-->
+        <intercept-url pattern="/login*" access="permitAll()"/>
+        <intercept-url pattern="/newclient*" access="hasRole('ROLE_ADMIN')"/>
 
         <!--<intercept-url pattern="/viewList**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
         <intercept-url pattern="/files**" access="isAuthenticated()" />-->
@@ -30,7 +30,7 @@
         <logout logout-success-url="/login?logout=true" logout-url="/logout" invalidate-session="true"/>
 
         <!--  Межсайтовая подделка запроса (защита)-->
-        <csrf disabled="true"/>  <!--Потом включить-->
+        <csrf />  <!--Потом включить-->
 
     </http>
 
