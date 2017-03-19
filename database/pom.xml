@@ -74,11 +74,7 @@
             <version>3.4.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${version.jackson}</version>
-        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.jongo/jongo -->
         <!--http://jongo.org/-->

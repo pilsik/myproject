@@ -16,4 +16,5 @@ public interface ProductService {
 
     void remove(Long id);
 
+    List<Product> getAllByType(String type);
 }

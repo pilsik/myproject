@@ -32,5 +32,8 @@ public class ProductDaoImpl implements ProductDao {
         mongoOperations.remove(Query.query(Criteria.where("id").is(id)), Product.class);
     }
 
-
+    @Override
+    public List<Product> getAllByType(String type) {
+        return mongoOperations.find(Query.query(Criteria.where("type").is(type)),Product.class);
+    }
 }

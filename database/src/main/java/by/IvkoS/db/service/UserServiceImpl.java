@@ -67,4 +67,5 @@ public class UserServiceImpl implements UserService {
     public Client findClientByLogin(String login) {
         return this.clientDao.findByLogin(login);
     }
+
 }

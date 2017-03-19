@@ -1,11 +1,8 @@
 package by.IvkoS.web.services;
 
-import by.IvkoS.db.dao.UserProfileDao;
 import by.IvkoS.db.entity.clients.Client;
 import by.IvkoS.db.entity.clients.security.UserProfile;
 import by.IvkoS.db.service.UserService;
-import by.IvkoS.web.controller.MainController;
-import com.sun.javafx.binding.StringFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

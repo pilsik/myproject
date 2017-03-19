@@ -11,6 +11,7 @@
     <meta name="description" content=""/>
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/bootstrap.css" rel="stylesheet"/>
+    <tiles:insertAttribute name="angular" ignore="true"/>
 </head>
 <body>
 <div class="wrapper">
@@ -20,7 +21,6 @@
     </header><!-- .header-->
 
     <div class="middle">
-
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">

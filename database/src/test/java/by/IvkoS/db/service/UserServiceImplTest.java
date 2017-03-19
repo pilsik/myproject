@@ -126,5 +126,8 @@ public class UserServiceImplTest {
         assertEquals(userService.getClientList().size(), 0);
     }
 
+    @Test
+    public void getRollBack() throws Exception {
 
+    }
 }

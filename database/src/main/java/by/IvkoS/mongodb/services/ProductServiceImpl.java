@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductDao productDao;
@@ -42,5 +42,10 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public void remove(Long id) {
         productDao.remove(id);
+    }
+
+    @Override
+    public List<Product> getAllByType(String type) {
+        return productDao.getAllByType(type);
     }
 }
