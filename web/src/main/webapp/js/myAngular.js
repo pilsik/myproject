@@ -20,6 +20,7 @@ app.controller('MyCtrl', ['$scope', '$http', function ($scope, $http) {
     function successCallback(response) {
         console.log(response.data)
         $scope.products = response.data;
+
     }
 
 }]);
