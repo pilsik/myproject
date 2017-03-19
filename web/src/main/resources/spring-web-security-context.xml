@@ -7,18 +7,27 @@
 	http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
     <!-- Empty filter chain for the home page and resources web-->
-    <http pattern="/home*" security="none"/>
     <http pattern="/css/**" security="none"/>
     <http pattern="/js/**" security="none"/>
     <http pattern="/image/**" security="none"/>
 
-    <http auto-config="true">
-        <intercept-url pattern="/newclient**" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/viewList**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
-      <!--  <intercept-url pattern="/files**" access="isAuthenticated()" />-->
+    <http auto-config="true" use-expressions="true">
+
+        <intercept-url pattern="/login*" access="permitAll()"/>
+        <intercept-url pattern="/newclient*" access="hasRole('ROLE_ADMIN')"/>
+
+        <!--<intercept-url pattern="/viewList**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+        <intercept-url pattern="/files**" access="isAuthenticated()" />-->
+
+        <form-login
+                login-page='/login'
+                default-target-url="/login"
+                authentication-failure-url="/login?error=true"
+                authentication-success-forward-url="/home"
+        />
 
         <!--Потеря сесси-->
-        <logout logout-success-url="/login" logout-url="/j_spring_security_logout"/>
+        <logout logout-success-url="/login?logout=true" logout-url="/logout" invalidate-session="true"/>
 
         <!--  Межсайтовая подделка запроса (защита)-->
         <csrf/>
@@ -26,12 +35,12 @@
     </http>
 
     <authentication-manager alias="authenticationManager">
-        <authentication-provider user-service-ref="customUserDetailsService" >
-            <password-encoder ref="bcryptEncoder" />
+        <authentication-provider user-service-ref="customUserDetailsService">
+            <password-encoder ref="bcryptEncoder"/>
         </authentication-provider>
     </authentication-manager>
 
-    <beans:bean id ="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="11"/>
     </beans:bean>
 

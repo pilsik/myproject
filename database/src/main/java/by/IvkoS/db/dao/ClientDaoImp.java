@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Repository
 public class ClientDaoImp extends GenericDaoJpaImpl<Client, Integer> implements ClientDao {
@@ -16,9 +18,8 @@ public class ClientDaoImp extends GenericDaoJpaImpl<Client, Integer> implements 
 
     @Override
     public Client findByLogin(String login) {
-        Client client = (Client) super.hibernateTemplate
-                .findByNamedParam("from Client as client where client.login=:login","login",new Object[]{login})
-                .get(INDEX_FIRST_CLIENT_AT_LIST);
-        return (client != null) ? client : Client.EMPTY_CLIENT;
+        List<Client> client = (List<Client>) super.hibernateTemplate
+                .findByNamedParam("from Client as client where client.login=:login", "login", new Object[]{login});
+        return (client.size() != 0) ? client.get(INDEX_FIRST_CLIENT_AT_LIST) : Client.EMPTY_CLIENT;
     }
 }
