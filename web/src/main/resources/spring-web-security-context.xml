@@ -30,7 +30,7 @@
         <logout logout-success-url="/login?logout=true" logout-url="/logout" invalidate-session="true"/>
 
         <!--  Межсайтовая подделка запроса (защита)-->
-        <csrf/>
+        <csrf disabled="true"/>  <!--Потом включить-->
 
     </http>
 
