@@ -1,3 +1,4 @@
+<%--suppress ALL --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -43,34 +44,40 @@
         <div class="loginmodal-container">
             <h1>Login to Your Account</h1><br>
             <c:url var="loginUrl" value="/login"/>
-            <form action="${loginUrl}" method="post" class="form-horizontal">
-                <div class="input-group input-sm">
-                    <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter login"
-                           required>
+            <form action="${loginUrl}" method="post" class="form-horizontal" id="login-form">
+
+                <div class="form-group">
+                    <div class="input-group input-sm">
+                        <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter login"
+                               required>
+                    </div>
                 </div>
-                <div class="input-group input-sm">
-                    <label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label>
-                    <input type="password" class="form-control" id="password" name="password"
-                           placeholder="Enter Password" required>
+                <div class="form-group">
+                    <div class="input-group input-sm">
+                        <label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Enter Password" required>
+                    </div>
                 </div>
-                <input type="hidden" name="${_csrf.parameterName}"
-                       value="${_csrf.token}"/>
-                <div class="form-actions">
-                    <input type="submit"
-                           class="btn btn-block btn-primary btn-default" value="Log in">
+
+                <div class="form-group">
+                    <input type="hidden" name="${_csrf.parameterName}"
+                           value="${_csrf.token}"/>
+                    <button
+                            class="g-recaptcha btn btn-block btn-primary btn-default"
+                            data-sitekey=
+                            <spring:eval expression="@propertyConfig['google.recaptcha.key.site']"/>
+                                    data-callback="onSubmit">Submit
+                    </button>
                 </div>
-                <recaptcha></recaptcha>
-                <button
-                        class="g-recaptcha"
-                        data-sitekey=<spring:eval expression="@propertyConfig['google.recaptcha.key.site']" />
-                        data-callback="YourOnSubmitFn">
-                    Submit
-                </button>
+
             </form>
         </div>
     </div>
 </div>
-
+<script>
+    document.querySelector('iframe').contentDocument.body.querySelector('.rc-anchor').style.display= 'none';
+</script>
 </body>
 </html>

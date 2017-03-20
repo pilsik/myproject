@@ -12,7 +12,7 @@
     <http pattern="/image/**" security="none"/>
 
 
-    <http auto-config="true" use-expressions="true">
+    <http auto-config="false" use-expressions="true" entry-point-ref="loginUrlAuthenticationEntryPoint">
 
         <custom-filter ref="reCaptchaFilter" before="FORM_LOGIN_FILTER"/>
 
@@ -21,19 +21,19 @@
 
         <!--<intercept-url pattern="/viewList**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
         <intercept-url pattern="/files**" access="isAuthenticated()" />-->
-
+        <!--
         <form-login
                 login-page='/login'
                 default-target-url="/login"
                 authentication-failure-url="/login?error=true"
                 authentication-success-forward-url="/home"
-        />
+        />-->
 
         <!--Потеря сесси-->
         <logout logout-success-url="/login?logout=true" logout-url="/logout" invalidate-session="true"/>
 
         <!--  Межсайтовая подделка запроса (защита)-->
-        <csrf />  <!--Потом включить-->
+        <csrf/>  <!--Потом включить-->
 
     </http>
 
@@ -45,6 +45,21 @@
 
     <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="11"/>
+    </beans:bean>
+
+    <beans:bean id="loginUrlAuthenticationEntryPoint"
+                class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <beans:constructor-arg name="loginFormUrl" value="/login"/>
+    </beans:bean>
+
+    <beans:bean id="successHandler"
+                class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+        <beans:property name="defaultTargetUrl" value="/home"/>
+    </beans:bean>
+
+    <beans:bean id="failureHandler"
+                class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+        <beans:property name="defaultFailureUrl" value="/login?error=true"/>
     </beans:bean>
 
 </beans:beans>
