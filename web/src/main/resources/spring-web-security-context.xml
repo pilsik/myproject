@@ -11,7 +11,10 @@
     <http pattern="/js/**" security="none"/>
     <http pattern="/image/**" security="none"/>
 
+
     <http auto-config="true" use-expressions="true">
+
+        <custom-filter ref="reCaptchaFilter" before="FORM_LOGIN_FILTER"/>
 
         <intercept-url pattern="/login*" access="permitAll()"/>
         <intercept-url pattern="/newclient*" access="hasRole('ROLE_ADMIN')"/>

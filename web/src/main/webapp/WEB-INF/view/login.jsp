@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -12,6 +13,8 @@
     <script src=" https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='/js/reCAPTCHA.js'></script>
     <link href="/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 
@@ -53,11 +56,17 @@
                 </div>
                 <input type="hidden" name="${_csrf.parameterName}"
                        value="${_csrf.token}"/>
-
                 <div class="form-actions">
                     <input type="submit"
                            class="btn btn-block btn-primary btn-default" value="Log in">
                 </div>
+                <recaptcha></recaptcha>
+                <button
+                        class="g-recaptcha"
+                        data-sitekey=<spring:eval expression="@propertyConfig['google.recaptcha.key.site']" />
+                        data-callback="YourOnSubmitFn">
+                    Submit
+                </button>
             </form>
         </div>
     </div>

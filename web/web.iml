@@ -12,22 +12,7 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="web application context" name="MVC application context" removed="true">
-          <file>file://$MODULE_DIR$/src/main/resources/spring-web-context.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring-web-security-context.xml</file>
-        </fileset>
-        <fileset id="web mvc-dispatcher servlet context" name="MVC mvc-dispatcher servlet context" removed="true">
-          <file>file://$MODULE_DIR$/src/main/resources/spring-web-context.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring-web-security-context.xml</file>
-        </fileset>
-        <fileset id="fileset" name="Spring Application Context1" removed="false">
-          <dependency>fileset==database</dependency>
-          <file>file://$MODULE_DIR$/../database/src/main/resources/spring-context-db.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring-web-context.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring-web-security-context.xml</file>
-        </fileset>
-      </configuration>
+      <configuration />
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">

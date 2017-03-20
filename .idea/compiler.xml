@@ -14,7 +14,6 @@
     <bytecodeTargetLevel>
       <module name="database" target="1.8" />
       <module name="my-project" target="1.8" />
-      <module name="rest" target="1.8" />
       <module name="restfull" target="1.8" />
       <module name="web" target="1.8" />
     </bytecodeTargetLevel>
